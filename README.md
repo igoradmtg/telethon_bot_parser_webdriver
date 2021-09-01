@@ -3,7 +3,7 @@ Telethon bot - Site parser - Webdriver selenium
 
 # Install
 
-pip install selenium
+pip install telethon
 
 pip install selenium
 

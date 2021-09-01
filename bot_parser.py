@@ -59,8 +59,8 @@ async def get_tovar_param(chat_id,tovar_number_user,tovar_name_user, event):
     chrome_options.add_experimental_option("prefs", prefs)
     browser = webdriver.Chrome(chrome_options=chrome_options)
     browser.implicitly_wait(4) # seconds
-    browser.get('https://www.wildberries.ru/')
-    assert 'Wildberries' in browser.title
+    browser.get('https://www.wildxxxxxx.ru/')
+    assert 'Wildxxxxxx' in browser.title
     elem = browser.find_element_by_class_name('search-catalog__input')  # Find the search box
     elem.send_keys(tovar_name_user.strip() + Keys.RETURN)
     num_page = 1 # Текущий номер страницы
@@ -120,7 +120,7 @@ async def get_tovar_param(chat_id,tovar_number_user,tovar_name_user, event):
             break
         #print("Не найден артикул товара")
             
-        # <a href="https://www.wildberries.ru/catalog/0/search.aspx?search=%D1%88%D0%B0%D0%BC%D0%BF%D1%83%D0%BD%D1%8C&amp;xsearch=true&amp;page=4" class="pagination-item" data-link="{on ~updatePage (+value)}" data-jsv="#905^/905^">4</a>
+        # <a href="https://www.wildxxxxxx.ru/catalog/0/search.aspx?search=%D1%88%D0%B0%D0%BC%D0%BF%D1%83%D0%BD%D1%8C&amp;xsearch=true&amp;page=4" class="pagination-item" data-link="{on ~updatePage (+value)}" data-jsv="#905^/905^">4</a>
         try:
             elm_a_page_next = browser.find_element_by_css_selector('a.pagination-next')
         except Exception as err:
@@ -290,7 +290,7 @@ async def start(event):
     name = utils.get_display_name(sender)
     print("start. Sender",name,"say",event.text)
     #await event.respond('Hi!')
-    await event.respond("<b>Узнайте, на каких позициях находится ваш товар в поиске Wildberries</b>\r\n"+"Введите артикул и запрос который вас интересует, например: <code>22695156 чехол для iPhone 12</code>.",parse_mode='html')
+    await event.respond("<b>Узнайте, на каких позициях находится ваш товар в поиске WildXXXXX</b>\r\n"+"Введите артикул и запрос который вас интересует, например: <code>22695156 чехол для iPhone 12</code>.",parse_mode='html')
     raise events.StopPropagation
 
 @bot.on(events.NewMessage(pattern='([0-9]* \S*)'))
@@ -309,6 +309,7 @@ async def numbers(event):
         ])
         
         await event.respond("Сервис доступен только для подписанных на канал",parse_mode='html',buttons=markup)
+
         raise events.StopPropagation
         return
     text = str(event.text).replace("`","")
